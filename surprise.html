@@ -1,0 +1,474 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise 💖</title>
+
+  <style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ff96c5, #700133);
+  font-family: "Georgia", serif;
+  color: #8b0045;
+}
+
+
+    h1 {
+      position: absolute;
+      top: 50px;
+      text-align: center;
+      font-size: 35px;
+      font-weight: normal;
+      color: #f8e9ff;
+      text-shadow: 0 0 20px rgba(255, 200, 255, 0.8);
+      width: 100%;
+      padding: 0 10px;
+      z-index: 50;
+    }
+
+    /* sparkles */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: floatUp 6s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
+    }
+
+    /* MAIN LAYOUT */
+    .scene {
+      position: relative;
+      width: 90%;
+      max-width: 700px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 50px;
+      z-index: 5;
+    }
+
+    /* bouquet wrapper */
+    .bouquet {
+      position: relative;
+      width: 280px;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* flower stem */
+    .stem {
+      position: absolute;
+      width: 10px;
+      height: 220px;
+      background: linear-gradient(to bottom, #2aff88, #0f6b3a);
+      border-radius: 20px;
+      bottom: 90px;
+      transform-origin: bottom;
+      animation: sway 3s infinite ease-in-out;
+      z-index: 3;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+
+    /* tulip head */
+    .tulip {
+      position: absolute;
+      width: 60px;
+      height: 70px;
+      background: radial-gradient(circle at top, #ffb3da, #ff2f88);
+      border-radius: 50% 50% 40% 40%;
+      top: -55px;
+      left: -25px;
+      box-shadow: 0 0 20px rgba(255, 100, 180, 0.7);
+      animation: bloom 2.5s infinite ease-in-out;
+    }
+
+    @keyframes bloom {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* tulip petals */
+    .tulip::before,
+    .tulip::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 60px;
+      background: radial-gradient(circle at top, #ffc3e5, #ff3f95);
+      border-radius: 50% 50% 40% 40%;
+      top: 5px;
+    }
+
+    .tulip::before {
+      left: -20px;
+      transform: rotate(-15deg);
+    }
+
+    .tulip::after {
+      right: -20px;
+      transform: rotate(15deg);
+    }
+
+    /* leaves */
+    .leaf {
+      position: absolute;
+      width: 40px;
+      height: 90px;
+      background: linear-gradient(to bottom, #34ff9b, #0f6b3a);
+      border-radius: 50%;
+      bottom: 120px;
+      transform-origin: bottom;
+      opacity: 0.9;
+    }
+
+    .leaf.left {
+      left: -20px;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.right {
+      right: -20px;
+      transform: rotate(25deg);
+    }
+
+    /* bouquet wrap */
+    .wrap {
+      position: absolute;
+      bottom: 0;
+      width: 280px;
+      height: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 5;
+    }
+
+    .paper {
+      position: absolute;
+      width: 260px;
+      height: 220px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      clip-path: polygon(50% 0%, 100% 25%, 80% 100%, 20% 100%, 0% 25%);
+    }
+
+    .paper.back {
+      background: #f3c8b2;
+      transform: rotate(-10deg);
+      opacity: 0.9;
+    }
+
+    .paper.center {
+      background: #f7d8c7;
+      transform: rotate(0deg);
+      opacity: 0.95;
+    }
+
+    .paper.front {
+      background: #fbe1d3;
+      transform: rotate(10deg);
+      opacity: 0.95;
+    }
+
+    /* envelope beside bouquet */
+    .envelope {
+      position: relative;
+      width: 140px;
+      height: 90px;
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      overflow: hidden;
+      animation: envelopeBounce 2s infinite ease-in-out;
+      z-index: 20;
+      margin-bottom: 80px;
+    }
+
+    @keyframes envelopeBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+      z-index: 1;
+    }
+
+    .envelope .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f5f5f5;
+      clip-path: polygon(0 0, 100% 0, 50% 60%);
+      transform-origin: top;
+      transition: 0.6s ease;
+      z-index: 4;
+    }
+
+    /* CLICK TEXT (FIXED) */
+    .click-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: #b00052;
+      text-shadow: 0 0 10px rgba(255, 150, 200, 0.8);
+      z-index: 3;
+      pointer-events: none;
+      transition: 0.4s ease;
+    }
+
+    .open .click-text {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    /* letter sliding */
+    .letter {
+      position: absolute;
+      width: 90%;
+      height: 85%;
+      left: 5%;
+      bottom: -100%;
+      background: #fff7fb;
+      border-radius: 6px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 12px;
+      color: #80002a;
+      text-align: center;
+      transition: 0.8s ease;
+      z-index: 2;
+    }
+
+    .open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .open .letter {
+      bottom: 10%;
+    }
+
+    /* ⭐ ANIMATED ARROW */
+    .arrow {
+      position: absolute;
+      top: -55px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      color: #ffb3da;
+      text-shadow: 0 0 20px rgba(255, 140, 200, 0.9);
+      animation: arrowBounce 1.2s infinite ease-in-out;
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 1;
+      }
+    }
+
+    /* popup message */
+    .popup {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+
+    .popup-box {
+      width: 320px;
+      padding: 20px;
+      border-radius: 18px;
+      background: #fff0f7;
+      text-align: center;
+      color: #8b0045;
+      font-size: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: popIn 0.4s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-box button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 12px;
+      background: #ff2f88;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* mobile fix */
+    @media (max-width: 600px) {
+      .scene {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .envelope {
+        margin-bottom: 0;
+      }
+
+      .arrow {
+        top: -50px;
+        font-size: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <audio id="bg-music" loop>
+        <source src="hitslab-love-love-story-music-270165.mp3" type="audio/mpeg">
+      </audio>
+      
+<h1>Flowers for you c:</h1>
+
+  <div class="scene">
+    <!-- bouquet -->
+    <div class="bouquet">
+
+      <div class="stem" style="left: 90px; height:240px;">
+        <div class="tulip"></div>
+        <div class="leaf left"></div>
+      </div>
+
+      <div class="stem" style="left: 130px; height:210px;">
+        <div class="tulip"></div>
+        <div class="leaf right"></div>
+      </div>
+
+      <div class="stem" style="left: 170px; height:250px;">
+        <div class="tulip"></div>
+        <div class="leaf left"></div>
+      </div>
+
+      <div class="stem" style="left: 60px; height:200px;">
+        <div class="tulip"></div>
+        <div class="leaf right"></div>
+      </div>
+
+      <div class="stem" style="left: 200px; height:220px;">
+        <div class="tulip"></div>
+        <div class="leaf left"></div>
+      </div>
+
+      <!-- bouquet paper wrap -->
+      <div class="wrap">
+        <div class="paper back"></div>
+        <div class="paper center"></div>
+        <div class="paper front"></div>
+      </div>
+
+    </div>
+
+    <!-- envelope beside bouquet -->
+    <div class="envelope" id="envelope">
+      <div class="arrow">⬇</div>
+      <div class="flap"></div>
+
+      <div class="click-text">Click Me 💌</div>
+
+      <div class="letter">
+        💖
+      </div>
+    </div>
+  </div>
+
+  <!-- popup -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+    
+      <p>
+        I just want you to know that you are special to me. <br><br>
+        Happy Valentine’s Day 😘🌸
+      </p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // generate sparkles randomly
+    for (let i = 0; i < 25; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.left = Math.random() * window.innerWidth + "px";
+      sparkle.style.top = Math.random() * window.innerHeight + "px";
+      sparkle.style.animationDuration = (Math.random() * 4 + 4) + "s";
+      sparkle.style.opacity = Math.random();
+      document.body.appendChild(sparkle);
+    }
+  
+    const envelope = document.getElementById("envelope");
+    const popup = document.getElementById("popup");
+    const music = document.getElementById("bg-music");
+  
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+  
+      // play soft music on first interaction
+      if (music.paused) {
+        music.volume = 0.4; // soft volume
+        music.play();
+      }
+  
+      setTimeout(() => {
+        popup.style.display = "flex";
+      }, 700);
+    });
+  
+    function closePopup() {
+      popup.style.display = "none";
+    }
+  </script>
+  
+
+</body>
+</html>

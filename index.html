@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Baby 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff5f8;
+    font-family: "Georgia", serif;
+    text-align: center;
+  }
+
+  .container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 350px;
+    width: 90%;
+  }
+
+  .cat img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: #c4004f;
+    margin: 15px 0 5px;
+  }
+
+  p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .yes {
+    background: #ff4f8b;
+    color: white;
+  }
+
+  .yes:hover {
+    transform: scale(1.1);
+  }
+
+  /* 🔥 Pink X button */
+  .no {
+  background: #ff4f8b;
+  color: white;        /* makes the X white */
+  font-weight: bold;
+}
+
+.no:hover {
+  transform: scale(1.1);
+  background: #ff2f75;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="cat">
+    <img src="cat.gif" alt="Cute Cat">
+  </div>
+
+  <h1>HEY BABY!</h1>
+  <p>Would you like to see your gift?</p>
+
+  <div class="buttons">
+    <button class="no" onclick="goToPlease()">X</button>
+    <button class="yes" onclick="goToSurprise()">✔</button>
+  </div>
+</div>
+
+<script>
+  function goToSurprise() {
+    window.location.href = "surprise.html";
+  }
+
+  function goToPlease() {
+    window.location.href = "please.html";
+  }
+</script>
+
+</body>
+</html>

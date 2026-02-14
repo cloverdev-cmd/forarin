@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aw Please? 🥺</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff5f8;
+    font-family: "Georgia", serif;
+    text-align: center;
+  }
+
+  .container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 350px;
+    width: 90%;
+  }
+
+  .cat img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: #c4004f;
+    margin: 15px 0 5px;
+  }
+
+  p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .back-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    background: #ff4f8b;
+    color: white;
+    transition: 0.3s ease;
+  }
+
+  .back-btn:hover {
+    transform: scale(1.1);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- GIF instead of emoji -->
+  <div class="cat">
+    <img src="gif.gif" alt="Cute Sad Cat">
+  </div>
+
+  <h1>AW PLEASE?</h1>
+  <p>I prepared this gift for you</p>
+
+  <button class="back-btn" onclick="goBack()">⬅</button>
+</div>
+
+<script>
+  function goBack() {
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
